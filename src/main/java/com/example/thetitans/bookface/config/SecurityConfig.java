@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -34,7 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/auth/**").permitAll()
                 .and()
                 .authorizeRequests().antMatchers( "/posts/").hasAnyRole("USER", "ADMIN")
+                .and()
+                .authorizeRequests().antMatchers( "/admin/**").hasAnyRole( "ADMIN")
                 .anyRequest()
                 .authenticated();
+
+        httpSecurity.addFilterBefore(jwtAuthenticationFilter , UsernamePasswordAuthenticationFilter.class);
     }
 }
