@@ -7,6 +7,7 @@ import com.example.thetitans.bookface.dto.RegisterRequest;
 import com.example.thetitans.bookface.exception.SpringRedditException;
 import com.example.thetitans.bookface.model.token.VerificationToken;
 import com.example.thetitans.bookface.model.user.Email;
+import com.example.thetitans.bookface.model.user.Role;
 import com.example.thetitans.bookface.model.user.User;
 import com.example.thetitans.bookface.repository.UserRepo;
 import com.example.thetitans.bookface.repository.VerificationTokenRepo;
@@ -58,6 +59,9 @@ public class AuthService {
         user.setLastName(registerRequest.getLastName());
         user.setCreated(Instant.now());
         user.setEnabled(false);
+        Role appRole = new Role();
+        appRole.setId(1L);
+        user.setRole(appRole);
 
         userRepository.save(user);
 
