@@ -60,5 +60,5 @@ public class User {
     private boolean enabled;
 
     @ManyToOne
-    private Role userRole;
+    private Role role;
 }
