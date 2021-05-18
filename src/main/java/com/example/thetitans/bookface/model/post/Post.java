@@ -28,6 +28,8 @@ public class Post {
     @Lob
     private String description;
 
+    private int privacy = 0; // public = 0; private = 1
+
     private Integer likeCount = 0;
     private Integer heartCount = 0;
 
