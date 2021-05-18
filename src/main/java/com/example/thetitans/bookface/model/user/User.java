@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -28,10 +29,19 @@ public class User {
     @NotBlank(message = "Username is required")
     private String username;
 
+    @NotBlank(message = "Firstname is required")
+    private String firstName;
+
+    @NotBlank(message = "Lastname is required")
+    private String lastName;
+
+    private String hobbies;
+
     private String about;
 
     private String avatar;
 
+    @NotBlank(message = "Phone is required")
     private String phone;
 
     private String address;
