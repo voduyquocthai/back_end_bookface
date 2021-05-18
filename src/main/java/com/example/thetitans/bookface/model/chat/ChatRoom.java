@@ -6,28 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.Instant;
 
-@Entity
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Message {
+public class ChatRoom {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long roomId;
 
     @ManyToOne
-    @JoinColumn(name = "chatRoomId")
-    private ChatRoom chatRoom;
+    private User firstUser;
 
     @ManyToOne
-    private User messageSender;
+    private User secondUser;
 
-    @ManyToOne
-    private User messageReceiver;
-
-    private String content;
-
-    private Instant createdTime;
+    private String name;
 }
