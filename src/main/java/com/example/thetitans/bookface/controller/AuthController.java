@@ -1,5 +1,12 @@
 package com.example.thetitans.bookface.controller;
 
+import com.example.thetitans.bookface.dto.AuthenticationResponse;
+import com.example.thetitans.bookface.dto.LoginRequest;
+import com.example.thetitans.bookface.dto.RefreshTokenRequest;
+import com.example.thetitans.bookface.dto.RegisterRequest;
+import com.example.thetitans.bookface.service.security.AuthService;
+import com.example.thetitans.bookface.service.security.RefreshTokenService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +16,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/auth")
+@AllArgsConstructor
 public class AuthController {
     private final RefreshTokenService refreshTokenService;
 
