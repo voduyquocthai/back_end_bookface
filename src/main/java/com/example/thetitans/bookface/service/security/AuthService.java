@@ -54,6 +54,8 @@ public class AuthService {
         user.setUsername(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setFirstName(registerRequest.getFirstName());
+        user.setLastName(registerRequest.getLastName());
         user.setCreated(Instant.now());
         user.setEnabled(false);
 
@@ -62,9 +64,9 @@ public class AuthService {
         String token = generateVerificationToken(user);
         mailService.sendMail(new Email("Please activate your account !",
                 user.getEmail(),
-                "Thank you for signing up to Reddit, " +
+                "Thank you for signing up to BookFace, " +
                         "please click to the below url to activate your account: " +
-                        "http://localhost:8282/api/auth/accountVerification/" + token));
+                        "http://localhost:8080/auth/accountVerification/" + token));
     }
 
 

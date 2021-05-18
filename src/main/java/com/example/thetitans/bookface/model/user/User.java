@@ -41,7 +41,6 @@ public class User {
 
     private String avatar;
 
-    @NotBlank(message = "Phone is required")
     private String phone;
 
     private String address;
