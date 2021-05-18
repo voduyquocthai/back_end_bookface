@@ -25,5 +25,4 @@ public class VerificationToken {
     private String token;
     @OneToOne(fetch = EAGER)
     private User user;
-    private Instant expiryDate;
 }
