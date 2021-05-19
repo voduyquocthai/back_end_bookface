@@ -4,13 +4,22 @@ import com.example.thetitans.bookface.model.user.Friendship;
 import com.example.thetitans.bookface.repository.FriendshipRepo;
 import com.example.thetitans.bookface.service.user.IFriendshipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class FriendShipServiceImpl implements IFriendshipService {
 
     @Autowired
     private FriendshipRepo friendshipRepository;
+
+    @Override
+    public Page<Friendship> findAll(Pageable pageable) {
+        return null;
+    }
 
     @Override
     public Iterable<Friendship> findAll() {
@@ -23,8 +32,8 @@ public class FriendShipServiceImpl implements IFriendshipService {
     }
 
     @Override
-    public Friendship findById(Long id) {
-        return friendshipRepository.getOne(id);
+    public Optional<Friendship> findById(Long id) {
+        return friendshipRepository.findById(id);
     }
 
     @Override

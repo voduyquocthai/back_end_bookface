@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     @Autowired
-    private PostService postService;
+    private final PostService postService;
 
     //region api status post
     @PostMapping
