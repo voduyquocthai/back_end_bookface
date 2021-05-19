@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/comments")
@@ -23,7 +25,11 @@ public class CommentController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Comment> getCommentById(@PathVariable Long id) {
-        Comment comment = commentService.findById(id);
+        Comment comment = null;
+        Optional<Comment> optionalComment = commentService.findById(id);
+        if(optionalComment.isPresent()){
+            comment = optionalComment.get();
+        }
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 

@@ -1,5 +1,6 @@
 package com.example.thetitans.bookface.service.user.impl;
 
+import com.example.thetitans.bookface.exception.PostNotFoundException;
 import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.repository.PostRepo;
 import com.example.thetitans.bookface.service.user.IPostService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class PostService implements IPostService {
@@ -28,8 +31,9 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public Post findById(Long id) {
-        return postRepo.findById(id).get();
+    public Optional<Post> findById(Long id) {
+        return postRepo.findById(id);
+
     }
 
     @Override
