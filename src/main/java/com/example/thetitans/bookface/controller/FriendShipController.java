@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class FriendShipController {
 
-    private IFriendshipService friendshipService;
+    private final IFriendshipService friendshipService;
 
     @PostMapping("/add-waiting")
     public ResponseEntity<?> addFiend(@RequestBody Friendship friendship) {
