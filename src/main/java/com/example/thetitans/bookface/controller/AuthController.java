@@ -7,6 +7,7 @@ import com.example.thetitans.bookface.dto.RegisterRequest;
 import com.example.thetitans.bookface.service.security.AuthService;
 import com.example.thetitans.bookface.service.security.RefreshTokenService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,12 @@ public class AuthController {
 
     private final AuthService authService;
 
+
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest){
         authService.signup(registerRequest);
         return new ResponseEntity<>("User Registration Successfully !", OK);
+
 
     }
 
