@@ -32,4 +32,9 @@ public class UserService implements IUserService {
     public void delete(Long id) {
         userRepo.deleteById(id);
     }
+
+    @Override
+    public Iterable<User> findFriend(Long id) {
+        return userRepo.findAllFriend(id);
+    }
 }

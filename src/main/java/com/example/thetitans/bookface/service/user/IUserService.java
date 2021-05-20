@@ -4,4 +4,5 @@ import com.example.thetitans.bookface.model.user.User;
 import com.example.thetitans.bookface.service.IGeneralService;
 
 public interface IUserService extends IGeneralService<User> {
+    Iterable<User> findFriend(Long id);
 }
