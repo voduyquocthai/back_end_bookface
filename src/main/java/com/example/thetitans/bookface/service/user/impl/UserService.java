@@ -3,15 +3,27 @@ package com.example.thetitans.bookface.service.user.impl;
 import com.example.thetitans.bookface.model.user.User;
 import com.example.thetitans.bookface.repository.UserRepo;
 import com.example.thetitans.bookface.service.user.IUserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
+
     @Autowired
     private UserRepo userRepo;
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        return null;
+    }
+
 
     @Override
     public Iterable<User> findAll() {
