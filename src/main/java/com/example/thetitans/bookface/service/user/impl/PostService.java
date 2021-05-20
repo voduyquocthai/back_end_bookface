@@ -3,6 +3,7 @@ package com.example.thetitans.bookface.service.user.impl;
 import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.repository.PostRepo;
 import com.example.thetitans.bookface.repository.UserRepo;
+import com.example.thetitans.bookface.service.security.AuthService;
 import com.example.thetitans.bookface.service.user.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,8 +16,8 @@ import java.util.Optional;
 public class PostService implements IPostService {
     @Autowired
     private PostRepo postRepo;
-
     private UserRepo userRepo;
+    private AuthService authService;
 
     @Override
     public Page<Post> findAll(Pageable pageable){

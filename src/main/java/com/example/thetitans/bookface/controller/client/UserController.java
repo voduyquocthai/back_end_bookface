@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -38,9 +39,16 @@ public class UserController {
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user){
         Optional<User> userOptional = userService.findById(id);
         if (userOptional.isPresent()){
+            if (user.getAvatar() == null){
+                user.setAvatar(userOptional.get().getAvatar());
+            }
             return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/list-friend/{id}")
+    public ResponseEntity<Iterable<User>> friend(@PathVariable Long id){
+        return new ResponseEntity<>(userService.findFriend(id),HttpStatus.OK);
+    }
 }
