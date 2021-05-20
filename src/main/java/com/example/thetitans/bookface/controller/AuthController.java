@@ -28,8 +28,6 @@ public class AuthController {
     public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest){
         authService.signup(registerRequest);
         return new ResponseEntity<>("User Registration Successfully !", OK);
-
-
     }
 
     @GetMapping("/accountVerification/{token}")

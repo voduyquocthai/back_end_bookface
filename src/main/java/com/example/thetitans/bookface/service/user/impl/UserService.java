@@ -49,4 +49,9 @@ public class UserService implements IUserService {
     public Iterable<User> findFriend(Long id) {
         return userRepo.findAllFriend(id);
     }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
 }
