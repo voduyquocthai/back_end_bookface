@@ -22,7 +22,7 @@ public class MailService {
     public void sendMail(Email notificationEmail){
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-            messageHelper.setFrom("ryanvu@reddit.com.vn");
+            messageHelper.setFrom("admin@bookface.com.vn");
             messageHelper.setTo(notificationEmail.getRecipient());
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(notificationEmail.getBody());
