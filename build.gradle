@@ -35,6 +35,14 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+    //mapstruct for class mapper
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    //timeago library & kotlin to run it
+    compile 'com.github.marlonlom:timeago:4.0.1'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: '1.4.10'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: '1.4.10'
+    testImplementation group: 'org.jetbrains.kotlin', name: 'kotlin-test-junit', version: '1.4.10'
     //api document
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'

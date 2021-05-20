@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.time.Instant;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -28,7 +27,7 @@ public class Post {
     @Lob
     private String description;
 
-    private int privacy = 0; // public = 0; private = 1
+    private int privacy = 2; // private = 0; friend_only = 1; public = 2
 
     private Integer likeCount = 0;
     private Integer heartCount = 0;
