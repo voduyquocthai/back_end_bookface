@@ -46,6 +46,7 @@ public class UserService implements IUserService {
     }
 
     @Override
+
     public Iterable<User> findFriend(Long id) {
         return userRepo.findAllFriend(id);
     }
