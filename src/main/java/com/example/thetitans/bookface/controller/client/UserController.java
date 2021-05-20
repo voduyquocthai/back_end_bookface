@@ -16,6 +16,15 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByUserName(@PathVariable String username){
+        Optional<User> userOptional = userService.findUserByUsername(username);
+        if(userOptional.isPresent()){
+            return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/user-profile/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         Optional<User> userOptional = userService.findById(id);
