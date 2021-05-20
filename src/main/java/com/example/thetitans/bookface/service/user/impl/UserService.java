@@ -44,4 +44,9 @@ public class UserService implements IUserService {
     public void delete(Long id) {
         userRepo.deleteById(id);
     }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
 }
