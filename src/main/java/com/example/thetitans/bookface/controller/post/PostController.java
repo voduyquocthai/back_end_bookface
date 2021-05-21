@@ -1,21 +1,14 @@
 package com.example.thetitans.bookface.controller.post;
-import com.example.thetitans.bookface.model.post.Comment;
+
 import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.service.user.impl.PostService;
-import javafx.geometry.Pos;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.web.servlet.function.ServerResponse.status;
 
 @RestController
 @RequestMapping("/posts")
