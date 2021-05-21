@@ -40,4 +40,14 @@ public class FriendShipServiceImpl implements IFriendshipService {
     public void delete(Long id) {
         friendshipRepository.deleteById(id);
     }
+
+    @Override
+    public Friendship findFriendshipBySenderUserIdAndReceiverUserId(Long senderUserId, Long ReceiverId) {
+        return friendshipRepository.findFriendshipBySenderUserIdAndReceiverUserId(senderUserId,ReceiverId);
+    }
+
+    @Override
+    public Friendship searchIfExistFriends(Long senderUserId, Long ReceiverUserId) {
+        return friendshipRepository.searchIfExistFriends(senderUserId,ReceiverUserId);
+    }
 }
