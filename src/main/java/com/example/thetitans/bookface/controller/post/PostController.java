@@ -15,6 +15,7 @@ import static org.springframework.http.ResponseEntity.status;
 @RestController
 @RequestMapping("/posts")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class PostController {
 
     private final PostService postService;
