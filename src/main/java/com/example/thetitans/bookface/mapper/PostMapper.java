@@ -38,6 +38,8 @@ public abstract class PostMapper {
     @Mapping(target = "id", source = "postId")
     @Mapping(target = "userName", source = "user.username")
     @Mapping(target = "userAvatar", source = "user.avatar")
+    @Mapping(target = "userId", source = "user.userId")
+    @Mapping(target = "privacy", source = "privacy")
     @Mapping(target = "commentCount", expression = "java(commentCount(post))")
     @Mapping(target = "duration", expression = "java(getDuration(post))")
     @Mapping(target = "liked", expression = "java(isLiked(post))")
