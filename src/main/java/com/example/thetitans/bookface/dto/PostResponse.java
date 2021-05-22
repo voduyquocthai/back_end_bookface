@@ -14,6 +14,7 @@ public class PostResponse {
     private Integer likeCount;
     private Integer heartCount;
     private Integer commentCount;
+    private String userAvatar;
     private String duration;
     private boolean liked;
     private boolean hearted;

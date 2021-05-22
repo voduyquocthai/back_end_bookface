@@ -1,5 +1,6 @@
 package com.example.thetitans.bookface.dto;
 
+import com.example.thetitans.bookface.model.emotion.EmotionType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostRequest {
+public class EmotionDto {
+    private EmotionType emotionType;
     private Long postId;
-    private String description;
-    private int privacy;
+
 }
