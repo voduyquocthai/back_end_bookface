@@ -9,8 +9,6 @@ public interface IUserService extends IGeneralService<User> {
 
     Iterable<User> findFriend(Long id);
 
-//    đây là test
-
     Optional<User> findUserByUsername(String username);
 
 
