@@ -32,10 +32,12 @@ public abstract class PostMapper {
     @Mapping(target = "likeCount", constant = "0")
     @Mapping(target = "heartCount", constant = "0")
     @Mapping(target = "user", source = "user")
+    @Mapping(target = "privacy", source = "postRequest.privacy")
     public abstract Post map(PostRequest postRequest, User user);
 
     @Mapping(target = "id", source = "postId")
     @Mapping(target = "userName", source = "user.username")
+    @Mapping(target = "userAvatar", source = "user.avatar")
     @Mapping(target = "commentCount", expression = "java(commentCount(post))")
     @Mapping(target = "duration", expression = "java(getDuration(post))")
     @Mapping(target = "liked", expression = "java(isLiked(post))")
