@@ -9,7 +9,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
-import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "app_user")
 public class User {
 
     @Id
