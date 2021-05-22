@@ -1,54 +1,53 @@
 package com.example.thetitans.bookface.controller.post;
 
-import com.example.thetitans.bookface.model.post.Post;
+import com.example.thetitans.bookface.dto.PostRequest;
+import com.example.thetitans.bookface.dto.PostResponse;
 import com.example.thetitans.bookface.service.user.impl.PostService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
+
+import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/posts")
 @AllArgsConstructor
-@CrossOrigin("*")
 public class PostController {
 
-    @Autowired
     private final PostService postService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Post>> getAllPost() {
-        Iterable<Post> posts = postService.findAll();
-        return new ResponseEntity<>(posts, HttpStatus.OK);
+    public ResponseEntity<List<PostResponse>> getAllPosts() {
+        return status(HttpStatus.OK).body(postService.getAllPosts());
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Post> findPostById(@PathVariable Long id) {
-        Post post = null;
-        Optional<Post> optionalPost = postService.findById(id);
-        if(optionalPost.isPresent()){
-            post = optionalPost.get();
-        }
-        return new ResponseEntity<>(post, HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
+        postService.save(postRequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        Post newPost = postService.save(post);
-        return new ResponseEntity<>(newPost, HttpStatus.CREATED);
+    @GetMapping("/{id}")
+    public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
+        return status(HttpStatus.OK).body(postService.getPostById(id));
+    }
+
+    @GetMapping("by-user/{userId}")
+    public ResponseEntity<List<PostResponse>> getPostsByUsername(@PathVariable Long userId) {
+        return status(HttpStatus.OK).body(postService.getPostsByUserId(userId));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
-        Post updatePost = postService.save(post);
-        return new ResponseEntity<>(updatePost, HttpStatus.OK);
+    public ResponseEntity<Void> updatePost(@RequestBody PostRequest postRequest) {
+        postService.save(postRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Post> deletePost(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
