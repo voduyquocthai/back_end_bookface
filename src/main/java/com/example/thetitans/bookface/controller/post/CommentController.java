@@ -1,52 +1,52 @@
 package com.example.thetitans.bookface.controller.post;
 
-import com.example.thetitans.bookface.model.post.Comment;
-import com.example.thetitans.bookface.service.user.ICommentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.thetitans.bookface.dto.CommentDto;
+import com.example.thetitans.bookface.service.user.impl.CommentService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
-@CrossOrigin("*")
+import static org.springframework.http.ResponseEntity.status;
+
 @RestController
 @RequestMapping("/comments")
+@AllArgsConstructor
 public class CommentController {
 
-    @Autowired
-    private ICommentService commentService;
+    private final CommentService commentService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Comment>> getAllComment() {
-        Iterable<Comment> books = commentService.findAll();
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    public ResponseEntity<List<CommentDto>> getAllComment() {
+        return status(HttpStatus.OK).body(commentService.findAllComment());
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Comment> getCommentById(@PathVariable Long id) {
-        Comment comment = null;
-        Optional<Comment> optionalComment = commentService.findById(id);
-        if(optionalComment.isPresent()){
-            comment = optionalComment.get();
-        }
-        return new ResponseEntity<>(comment, HttpStatus.OK);
+    @GetMapping("/by-post/{postId}")
+    public ResponseEntity<List<CommentDto>> getAllCommentForPost(@PathVariable Long postId) {
+        return new ResponseEntity<>(commentService.findByPost(postId), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-user/{userId}")
+    public ResponseEntity<List<CommentDto>> getAllCommentForUser(@PathVariable Long userId) {
+        return new ResponseEntity<>(commentService.findAllByUserId(userId), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
-        Comment newComment = commentService.save(comment);
-        return new ResponseEntity<>(newComment, HttpStatus.CREATED);
+    public ResponseEntity<Void> createComment(@RequestBody CommentDto commentDto) {
+        commentService.save(commentDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Comment> updateComment(@RequestBody Comment comment) {
-        Comment updateComment = commentService.save(comment);
-        return new ResponseEntity<>(updateComment, HttpStatus.OK);
+    public ResponseEntity<Void> updateComment(@RequestBody CommentDto commentDto) {
+        commentService.save(commentDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Comment> deleteComment(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         commentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
