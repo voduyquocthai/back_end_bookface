@@ -51,4 +51,6 @@ public class UserController {
     public ResponseEntity<Iterable<User>> friend(@PathVariable Long id){
         return new ResponseEntity<>(userService.findFriend(id),HttpStatus.OK);
     }
+
+
 }
