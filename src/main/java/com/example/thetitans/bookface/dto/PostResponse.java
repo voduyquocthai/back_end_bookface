@@ -18,4 +18,6 @@ public class PostResponse {
     private String duration;
     private boolean liked;
     private boolean hearted;
+    private int privacy;
+    private Long userId;
 }
