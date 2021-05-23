@@ -57,4 +57,10 @@ public class EmotionService {
                 .user(authService.getCurrentUser())
                 .build();
     }
+
+    public void delete(Long id){
+        postRepo.deleteById(id);
+    }
+
+
 }
