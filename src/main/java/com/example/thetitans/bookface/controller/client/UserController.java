@@ -5,6 +5,7 @@ import com.example.thetitans.bookface.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private IUserService userService;
-
+    @Transactional
     @GetMapping("/{username}")
     public ResponseEntity<User> getUserByUserName(@PathVariable String username){
         Optional<User> userOptional = userService.findUserByUsername(username);
