@@ -2,7 +2,6 @@ package com.example.thetitans.bookface.service.user.impl;
 
 import com.example.thetitans.bookface.dto.EmotionDto;
 import com.example.thetitans.bookface.exception.PostNotFoundException;
-import com.example.thetitans.bookface.exception.SpringRedditException;
 import com.example.thetitans.bookface.model.emotion.Emotion;
 import com.example.thetitans.bookface.model.emotion.EmotionType;
 import com.example.thetitans.bookface.model.post.Post;
@@ -15,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static com.example.thetitans.bookface.model.emotion.EmotionType.*;
+import static com.example.thetitans.bookface.model.emotion.EmotionType.HEART;
+import static com.example.thetitans.bookface.model.emotion.EmotionType.LIKE;
 
 @Service
 @AllArgsConstructor
