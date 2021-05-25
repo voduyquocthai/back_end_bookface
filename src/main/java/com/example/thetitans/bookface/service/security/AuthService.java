@@ -12,7 +12,6 @@ import com.example.thetitans.bookface.model.user.User;
 import com.example.thetitans.bookface.repository.UserRepo;
 import com.example.thetitans.bookface.repository.VerificationTokenRepo;
 import com.example.thetitans.bookface.security.JwtProvider;
-import com.example.thetitans.bookface.service.security.RefreshTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -70,7 +69,7 @@ public class AuthService {
                 user.getEmail(),
                 "Thank you for signing up to BookFace, " +
                         "please click to the below url to activate your account: " +
-                        "http://localhost:8080/auth/accountVerification/" + token));
+                        "https://book-face-back-end.herokuapp.com/auth/accountVerification/" + token));
     }
 
 
