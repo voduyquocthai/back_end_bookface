@@ -109,6 +109,7 @@ public class AuthService {
                 .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
                 .username(loginRequest.getUsername())
                 .userId(userId)
+                .userRole(this.getCurrentUser().getRole().getName())
                 .build();
     }
 

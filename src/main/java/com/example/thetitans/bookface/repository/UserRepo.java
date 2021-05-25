@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,6 +16,14 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     @Query(value = "select * from bookface.app_user join bookface.friendship on bookface.friendship.receiver_user_id = bookface.app_user.user_id where bookface.friendship.sender_user_id =?1 and bookface.friendship.status=true\n" +
             "union all\n" +
-            "select * from bookface.app_user join bookface.friendship on bookface.friendship.sender_user_id = bookface.app_user.user_id where bookface.friendship.receiver_user_id =?1 and bookface.friendship.status=true\n",nativeQuery = true)
+            "select * from bookface.app_user join bookface.friendship on bookface.friendship.sender_user_id = bookface.app_user.user_id where bookface.friendship.receiver_user_id =?1 and bookface.friendship.status=true\n", nativeQuery = true)
     Iterable<User> findAllFriend(Long id);
+
+    @Query(value = "SELECT * FROM bookface.app_user where enabled = true", nativeQuery = true)
+    List<User> findAllUserActivated();
+
+    @Query(value = "SELECT * FROM bookface.app_user where enabled = false", nativeQuery = true)
+    List<User> findAllUserBlocked();
+
+
 }
