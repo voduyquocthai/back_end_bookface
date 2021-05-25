@@ -11,4 +11,6 @@ public class PostRequest {
     private Long postId;
     private String description;
     private int privacy;
+    private Integer likeCount;
+    private Integer heartCount;
 }
