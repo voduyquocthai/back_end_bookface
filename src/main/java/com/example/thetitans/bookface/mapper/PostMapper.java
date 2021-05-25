@@ -57,9 +57,9 @@ public abstract class PostMapper {
     private boolean checkEmotionType(Post post, EmotionType emotionType){
         if (authService.isLoggedIn()) {
             Optional<Emotion> emotionForPostByUser =
-                    emotionRepo.findTopByPostAndUserOrderByEmotionIdDesc(post,
-                            authService.getCurrentUser());
-            return emotionForPostByUser.filter(emotion -> emotion.getEmotionType().equals(emotionType))
+                    emotionRepo.findEmotionByPostAndUserAndEmotionType(post,
+                            authService.getCurrentUser(),emotionType);
+            return emotionForPostByUser
                     .isPresent();
         }
         return false;
