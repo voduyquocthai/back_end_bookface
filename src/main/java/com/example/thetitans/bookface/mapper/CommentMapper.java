@@ -19,5 +19,7 @@ public abstract class CommentMapper {
 
     @Mapping(target ="postId",expression = "java(comment.getPost().getPostId())")
     @Mapping(target ="userId",expression = "java(comment.getUser().getUserId())")
+    @Mapping(target ="username",expression = "java(comment.getUser().getUsername())")
+    @Mapping(target ="userAvatar",expression = "java(comment.getUser().getAvatar())")
     public abstract CommentDto mapToDto(Comment comment);
 }
