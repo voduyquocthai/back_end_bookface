@@ -1,6 +1,7 @@
 package com.example.thetitans.bookface.service.user.impl;
 
 import com.example.thetitans.bookface.dto.CommentDto;
+import com.example.thetitans.bookface.dto.PostResponse;
 import com.example.thetitans.bookface.exception.PostNotFoundException;
 import com.example.thetitans.bookface.mapper.CommentMapper;
 import com.example.thetitans.bookface.model.post.Comment;
@@ -39,6 +40,7 @@ public class CommentService implements ICommentService {
         commentRepo.save(comment);
     }
 
+
     public List<CommentDto> findAllComment() {
         return commentRepo.findAll()
                 .stream()
@@ -63,8 +65,8 @@ public class CommentService implements ICommentService {
         return commentDtosForUser;
     }
 
-    public CommentDto findCommentById(Long commentId) {
-        Comment comment = commentRepo.getOne(commentId);
+    public CommentDto findCommentById(Long id) {
+        Comment comment = commentRepo.getOne(id);
         return commentMapper.mapToDto(comment);
     }
 
