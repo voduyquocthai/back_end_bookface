@@ -8,7 +8,6 @@ import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.repository.EmotionRepo;
 import com.example.thetitans.bookface.repository.PostRepo;
 import com.example.thetitans.bookface.service.security.AuthService;
-import com.example.thetitans.bookface.service.user.IEmotionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

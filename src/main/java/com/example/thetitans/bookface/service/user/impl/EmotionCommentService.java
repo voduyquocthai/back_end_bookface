@@ -1,14 +1,10 @@
 package com.example.thetitans.bookface.service.user.impl;
 
 import com.example.thetitans.bookface.dto.EmotionCommentDto;
-import com.example.thetitans.bookface.dto.EmotionDto;
 import com.example.thetitans.bookface.exception.CommentNotFoundException;
-import com.example.thetitans.bookface.exception.PostNotFoundException;
-import com.example.thetitans.bookface.model.emotion.Emotion;
 import com.example.thetitans.bookface.model.emotion.EmotionComment;
 import com.example.thetitans.bookface.model.emotion.EmotionType;
 import com.example.thetitans.bookface.model.post.Comment;
-import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.repository.CommentRepo;
 import com.example.thetitans.bookface.repository.EmotionCommentRepo;
 import com.example.thetitans.bookface.service.security.AuthService;
