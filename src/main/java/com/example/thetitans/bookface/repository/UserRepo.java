@@ -1,6 +1,8 @@
 package com.example.thetitans.bookface.repository;
 
 import com.example.thetitans.bookface.model.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +23,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     @Query(value = "call mutual_friend(:id1,:id2)",nativeQuery = true)
     Iterable<User> getAllMutualFriends(@Param("id1") Long id1, @Param("id2") Long id2);
+
+    @Query(value = "select * from app_user where username like ?1",nativeQuery = true)
+    Page<User> findUserByUsernameLike(String key, PageRequest pageRequest);
 }
