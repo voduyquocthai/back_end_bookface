@@ -24,6 +24,10 @@ public class CommentController {
         return status(HttpStatus.OK).body(commentService.findAllComment());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CommentDto> getCommentById(@PathVariable Long id) {
+        return status(HttpStatus.OK).body(commentService.findCommentById(id));
+    }
     @GetMapping("/by-post/{postId}")
     public ResponseEntity<List<CommentDto>> getAllCommentForPost(@PathVariable Long postId) {
         return new ResponseEntity<>(commentService.findByPost(postId), HttpStatus.OK);
@@ -48,6 +52,7 @@ public class CommentController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
+
         commentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

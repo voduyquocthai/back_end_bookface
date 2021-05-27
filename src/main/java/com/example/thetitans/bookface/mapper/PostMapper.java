@@ -29,8 +29,8 @@ public abstract class PostMapper {
 
     @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
     @Mapping(target = "description", source = "postRequest.description")
-    @Mapping(target = "likeCount", constant = "0")
-    @Mapping(target = "heartCount", constant = "0")
+    @Mapping(target = "likeCount", source = "postRequest.likeCount")
+    @Mapping(target = "heartCount", source = "postRequest.heartCount")
     @Mapping(target = "user", source = "user")
     @Mapping(target = "privacy", source = "postRequest.privacy")
     public abstract Post map(PostRequest postRequest, User user);
@@ -57,9 +57,9 @@ public abstract class PostMapper {
     private boolean checkEmotionType(Post post, EmotionType emotionType){
         if (authService.isLoggedIn()) {
             Optional<Emotion> emotionForPostByUser =
-                    emotionRepo.findTopByPostAndUserOrderByEmotionIdDesc(post,
-                            authService.getCurrentUser());
-            return emotionForPostByUser.filter(emotion -> emotion.getEmotionType().equals(emotionType))
+                    emotionRepo.findEmotionByPostAndUserAndEmotionType(post,
+                            authService.getCurrentUser(),emotionType);
+            return emotionForPostByUser
                     .isPresent();
         }
         return false;
