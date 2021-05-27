@@ -49,6 +49,8 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.3.4.RELEASE'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    //websocket
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 test {
