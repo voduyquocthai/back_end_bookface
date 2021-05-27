@@ -37,7 +37,7 @@ public class EmotionCommentService {
             if(HEART.equals(emotionType)){
                 comment.setHeartCount(comment.getHeartCount() -1);
             }
-            emotionCommentRepo.deleteById(emotionByCommentAndUserAndEmotionType.get().getEmotionCommmentId());
+            emotionCommentRepo.deleteById(emotionByCommentAndUserAndEmotionType.get().getEmotionCommentId());
         } else {
             if(LIKE.equals(emotionCommentDto.getEmotionType())){
                 comment.setLikeCount(comment.getLikeCount() + 1);

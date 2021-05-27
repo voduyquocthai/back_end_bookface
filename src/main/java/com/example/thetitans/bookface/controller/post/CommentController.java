@@ -1,7 +1,6 @@
 package com.example.thetitans.bookface.controller.post;
 
 import com.example.thetitans.bookface.dto.CommentDto;
-import com.example.thetitans.bookface.dto.PostResponse;
 import com.example.thetitans.bookface.service.user.impl.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -52,6 +51,7 @@ public class CommentController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
+
         commentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
