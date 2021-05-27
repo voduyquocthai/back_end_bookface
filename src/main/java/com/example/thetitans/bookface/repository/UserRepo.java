@@ -19,7 +19,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     @Query(value = "select * from app_user join friendship on friendship.receiver_user_id = app_user.user_id where friendship.sender_user_id =?1 and friendship.status=true\n" +
             "union all\n" +
-            "select * from app_user join friendship on friendship.sender_user_id = app_user.user_id where friendship.receiver_user_id =?1 and bookface.friendship.status=true\n", nativeQuery = true)
+            "select * from app_user join friendship on friendship.sender_user_id = app_user.user_id where friendship.receiver_user_id =?1 and friendship.status=true\n",nativeQuery = true)
     Iterable<User> findAllFriend(Long id);
 
     @Query(value = "SELECT * FROM app_user where enabled = true", nativeQuery = true)
