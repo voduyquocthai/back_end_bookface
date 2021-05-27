@@ -19,4 +19,5 @@ public class EmotionController {
         emotionService.vote(emotionDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

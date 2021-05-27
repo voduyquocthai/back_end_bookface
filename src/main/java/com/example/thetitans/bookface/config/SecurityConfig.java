@@ -34,11 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable()
-                .authorizeRequests().antMatchers("/auth/**","/users/**","/friend/**").permitAll()
+                .authorizeRequests().antMatchers("/auth/**","/users/**","/friend/**","/comments/**").permitAll()
                 .and()
                 .authorizeRequests().antMatchers( "/posts/").hasAnyRole("USER", "ADMIN")
                 .and()
-                .authorizeRequests().antMatchers( "/admin/**").hasAnyRole( "ADMIN")
+                .authorizeRequests().antMatchers( "/admin/**").hasRole( "ADMIN")
                 .anyRequest()
                 .authenticated();
         httpSecurity.addFilterBefore(jwtAuthenticationFilter , UsernamePasswordAuthenticationFilter.class);
