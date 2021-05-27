@@ -27,9 +27,30 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    //jason web token
+    implementation group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.1.1.RELEASE'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+    //mapstruct for class mapper
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    //timeago library & kotlin to run it
+    compile 'com.github.marlonlom:timeago:4.0.1'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: '1.4.10'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: '1.4.10'
+    testImplementation group: 'org.jetbrains.kotlin', name: 'kotlin-test-junit', version: '1.4.10'
+    //api document
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.3.4.RELEASE'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    //websocket
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 test {

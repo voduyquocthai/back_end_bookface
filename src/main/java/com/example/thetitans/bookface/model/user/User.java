@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
-import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "app_user")
 public class User {
 
     @Id
@@ -38,10 +35,9 @@ public class User {
     private String hobbies;
 
     private String about;
-
+    @Lob
     private String avatar;
 
-    @NotBlank(message = "Phone is required")
     private String phone;
 
     private String address;
@@ -60,5 +56,5 @@ public class User {
     private boolean enabled;
 
     @ManyToOne
-    private Role userRole;
+    private Role role;
 }
