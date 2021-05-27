@@ -58,7 +58,7 @@ public class UserService implements IUserService {
     public Iterable<User> getAllMutualFriends(Long id1, Long id2) {
         return userRepo.getAllMutualFriends(id1, id2);
     }
-
+  
     @Override
     public Iterable<User> findAll(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
