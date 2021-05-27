@@ -17,4 +17,8 @@ public class CommentDto {
     private Long userId;
     private String userAvatar;
     private String username;
+    private Integer likeCount;
+    private Integer heartCount;
+    private boolean liked;
+    private boolean hearted;
 }

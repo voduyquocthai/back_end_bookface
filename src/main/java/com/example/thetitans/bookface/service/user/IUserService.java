@@ -12,5 +12,5 @@ public interface IUserService extends IGeneralService<User> {
 
     Optional<User> findUserByUsername(String username);
 
-
+    Iterable<User> getAllMutualFriends(Long id1, Long id2);
 }

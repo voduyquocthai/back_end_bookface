@@ -3,6 +3,7 @@ package com.example.thetitans.bookface.repository;
 import com.example.thetitans.bookface.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface UserRepo extends JpaRepository<User, Long> {
     List<User> findAllUserBlocked();
 
 
+    @Query(value = "call mutual_friend (:id1,:id2)",nativeQuery = true)
+    Iterable<User> getAllMutualFriends(@Param("id1") Long id1, @Param("id2") Long id2);
 }

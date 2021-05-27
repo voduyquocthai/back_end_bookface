@@ -29,8 +29,8 @@ public abstract class PostMapper {
 
     @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
     @Mapping(target = "description", source = "postRequest.description")
-    @Mapping(target = "likeCount", constant = "0")
-    @Mapping(target = "heartCount", constant = "0")
+    @Mapping(target = "likeCount", source = "postRequest.likeCount")
+    @Mapping(target = "heartCount", source = "postRequest.heartCount")
     @Mapping(target = "user", source = "user")
     @Mapping(target = "privacy", source = "postRequest.privacy")
     public abstract Post map(PostRequest postRequest, User user);

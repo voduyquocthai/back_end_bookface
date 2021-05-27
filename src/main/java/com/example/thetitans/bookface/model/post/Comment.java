@@ -28,6 +28,9 @@ public class Comment {
     @JoinColumn(name = "postId", referencedColumnName = "postId")
     private Post post;
 
+    private Integer likeCount = 0;
+    private Integer heartCount = 0;
+
     private Instant createdDate;
 
     @ManyToOne(fetch = EAGER)
