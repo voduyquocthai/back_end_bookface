@@ -10,9 +10,13 @@ public interface IAdminService extends IGeneralService<User> {
 
     Optional<User> findUserByUsername(String usernName);
 
+    List<User> fildAll();
+
     List<User> findAllUserActivated();
 
     List<User> findAllUserBlocked();
 
     void blockUserById(Long id);
+
+    void unBlockUserById(Long id);
 }

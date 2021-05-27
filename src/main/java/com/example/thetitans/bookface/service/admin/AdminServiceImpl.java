@@ -48,6 +48,11 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
+    public List<User> fildAll() {
+        return userRepo.findAll();
+    }
+
+    @Override
     public List<User> findAllUserActivated() {
         return userRepo.findAllUserActivated();
     }
@@ -66,4 +71,15 @@ public class AdminServiceImpl implements IAdminService{
             userRepo.save(user);
         }
     }
+
+    @Override
+    public void unBlockUserById(Long id) {
+        Optional<User> optionalUser = userRepo.findByUserId(id);
+        if(optionalUser.isPresent()){
+            User user = optionalUser.get();
+            user.setEnabled(true);
+            userRepo.save(user);
+        }
+    }
+
 }
