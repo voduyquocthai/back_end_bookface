@@ -38,6 +38,7 @@ public class UserController {
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user){
         Optional<User> userOptional = userService.findById(id);
         if (userOptional.isPresent()){
+            user.setRole(userOptional.get().getRole());
             if (user.getAvatar() == null){
                 user.setAvatar(userOptional.get().getAvatar());
             }

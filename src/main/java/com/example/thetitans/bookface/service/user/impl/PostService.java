@@ -36,8 +36,10 @@ public class PostService implements IPostService {
 
     //method mới sử dụng mapstruct
 
-    public void save(PostRequest postRequest){
-        postRepo.save(postMapper.map(postRequest, authService.getCurrentUser()));
+    public PostResponse save(PostRequest postRequest){
+        Post post = postMapper.map(postRequest, authService.getCurrentUser());
+        postRepo.save(post);
+        return postMapper.mapToDto(post);
     }
 
     public void delete(Long id){
