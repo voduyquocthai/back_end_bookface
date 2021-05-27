@@ -24,6 +24,6 @@ public interface UserRepo extends JpaRepository<User, Long> {
     @Query(value = "call mutual_friend(:id1,:id2)",nativeQuery = true)
     Iterable<User> getAllMutualFriends(@Param("id1") Long id1, @Param("id2") Long id2);
 
-    @Query(value = "select * from app_user where username like ?1",nativeQuery = true)
+    @Query(value = "select * from app_user where username like ?1 and enabled = true",nativeQuery = true)
     Page<User> findUserByUsernameLike(String key, PageRequest pageRequest);
 }
