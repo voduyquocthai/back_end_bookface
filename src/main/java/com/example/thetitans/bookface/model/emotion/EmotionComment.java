@@ -20,7 +20,7 @@ import static javax.persistence.FetchType.EAGER;
 public class EmotionComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long emotionCommmentId;
+    private Long emotionCommentId;
 
     private EmotionType emotionType;
 
