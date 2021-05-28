@@ -18,14 +18,10 @@ public class Message {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "chatRoomId")
-    private ChatRoom chatRoom;
+    private User sender;
 
     @ManyToOne
-    private User messageSender;
-
-    @ManyToOne
-    private User messageReceiver;
+    private User receiver;
 
     private String content;
 

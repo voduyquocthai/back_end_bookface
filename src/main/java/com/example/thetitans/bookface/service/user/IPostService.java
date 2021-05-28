@@ -6,7 +6,7 @@ import com.example.thetitans.bookface.dto.PostResponse;
 import java.util.List;
 
 public interface IPostService {
-    void save(PostRequest postRequest);
+    PostResponse save(PostRequest postRequest);
 
     void delete(Long id);
 

@@ -15,6 +15,7 @@ import static org.springframework.http.ResponseEntity.status;
 @RestController
 @RequestMapping("/posts")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class PostController {
 
     private final PostService postService;
@@ -25,9 +26,8 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
-        postService.save(postRequest);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<PostResponse> createPost(@RequestBody PostRequest postRequest) {
+        return status(HttpStatus.CREATED).body(postService.save(postRequest));
     }
 
     @GetMapping("/{id}")
@@ -41,9 +41,8 @@ public class PostController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> updatePost(@RequestBody PostRequest postRequest) {
-        postService.save(postRequest);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<PostResponse> updatePost(@RequestBody PostRequest postRequest) {
+        return status(HttpStatus.OK).body(postService.save(postRequest));
     }
 
     @DeleteMapping("/delete/{id}")
