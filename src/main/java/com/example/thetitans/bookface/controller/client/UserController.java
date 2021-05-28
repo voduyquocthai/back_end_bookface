@@ -52,6 +52,7 @@ public class UserController {
         return new ResponseEntity<>(userService.findFriend(id),HttpStatus.OK);
     }
 
+
     @GetMapping("/mutual-friends/{userId1}/{userId2}")
     public ResponseEntity<Iterable<User>> getAllMutualFriends(@PathVariable("userId1") Long id1, @PathVariable("userId2") Long id2){
         return new ResponseEntity<>(userService.getAllMutualFriends(id1,id2),HttpStatus.OK);

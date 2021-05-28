@@ -8,10 +8,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService implements IUserService {
 
     @Autowired
@@ -48,7 +50,7 @@ public class UserService implements IUserService {
     public Iterable<User> findFriend(Long id) {
         return userRepo.findAllFriend(id);
     }
-
+    @Transactional
     @Override
     public Optional<User> findUserByUsername(String username) {
         return userRepo.findByUsername(username);

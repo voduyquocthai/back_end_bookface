@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/emotions")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class EmotionController {
     private final EmotionService emotionService;
 
