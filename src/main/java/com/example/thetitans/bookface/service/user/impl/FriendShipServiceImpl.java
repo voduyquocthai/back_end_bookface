@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -50,5 +51,10 @@ public class FriendShipServiceImpl implements IFriendshipService {
     @Override
     public Friendship searchIfExistFriends(Long senderUserId, Long ReceiverUserId) {
         return friendshipRepository.searchIfExistFriends(senderUserId,ReceiverUserId);
+    }
+
+    @Override
+    public List<Friendship> findAllFriendsByReceiverUserId(Long id) {
+        return friendshipRepository.findAllFriendsByReceiverUserId(id);
     }
 }
