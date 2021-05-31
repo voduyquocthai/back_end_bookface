@@ -6,6 +6,8 @@ import com.example.thetitans.bookface.exception.PostNotFoundException;
 import com.example.thetitans.bookface.mapper.PostMapper;
 import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.model.user.User;
+import com.example.thetitans.bookface.repository.CommentRepo;
+import com.example.thetitans.bookface.repository.EmotionRepo;
 import com.example.thetitans.bookface.repository.PostRepo;
 import com.example.thetitans.bookface.repository.UserRepo;
 import com.example.thetitans.bookface.service.security.AuthService;
@@ -29,6 +31,8 @@ public class PostService implements IPostService {
     private final UserRepo userRepo;
     private final AuthService authService;
     private final PostMapper postMapper;
+    private final EmotionRepo emotionRepo;
+    private final CommentRepo commentRepo;
 
     //method mới sử dụng mapstruct
 
@@ -39,6 +43,8 @@ public class PostService implements IPostService {
     }
 
     public void delete(Long id){
+        emotionRepo.deleteEmotionByPostId(id);
+        commentRepo.deleteCommentByPostId(id);
         postRepo.deleteById(id);
     }
 

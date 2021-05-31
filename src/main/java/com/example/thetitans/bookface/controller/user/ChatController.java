@@ -16,7 +16,12 @@ public class ChatController {
     @Autowired
     private IMessageService messageService;
 
-
+    @GetMapping
+    public ResponseEntity<Iterable<Message>> getAllChat(@RequestParam("userId1") Long userId1,
+                                                     @RequestParam("userId2") Long userId2,
+                                                     @RequestParam("size") Integer size) {
+        return new ResponseEntity<>(messageService.getAllHistoryBetweenTwoUser(userId1, userId2, size), HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<Message> createNewMessage(@RequestBody Message message) {

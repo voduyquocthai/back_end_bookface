@@ -17,21 +17,21 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     Optional<User> findByUserId(Long id);
 
-    @Query(value = "select * from bookface.app_user join bookface.friendship on bookface.friendship.receiver_user_id = bookface.app_user.user_id where bookface.friendship.sender_user_id =?1 and bookface.friendship.status=true\n" +
+    @Query(value = "select * from mxh_bookface.app_user join mxh_bookface.friendship on mxh_bookface.friendship.receiver_user_id = mxh_bookface.app_user.user_id where mxh_bookface.friendship.sender_user_id =?1 and mxh_bookface.friendship.status=true\n" +
             "union all\n" +
-            "select * from bookface.app_user join bookface.friendship on bookface.friendship.sender_user_id = bookface.app_user.user_id where bookface.friendship.receiver_user_id =?1 and bookface.friendship.status=true\n", nativeQuery = true)
+            "select * from mxh_bookface.app_user join mxh_bookface.friendship on mxh_bookface.friendship.sender_user_id = mxh_bookface.app_user.user_id where mxh_bookface.friendship.receiver_user_id =?1 and mxh_bookface.friendship.status=true\n", nativeQuery = true)
     Iterable<User> findAllFriend(Long id);
 
-    @Query(value = "SELECT * FROM bookface.app_user where enabled = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM mxh_bookface.app_user where enabled = true", nativeQuery = true)
     List<User> findAllUserActivated();
 
-    @Query(value = "SELECT * FROM bookface.app_user where enabled = false", nativeQuery = true)
+    @Query(value = "SELECT * FROM mxh_bookface.app_user where enabled = false", nativeQuery = true)
     List<User> findAllUserBlocked();
 
 
-    @Query(value = "call mutual_friend (:id1,:id2)",nativeQuery = true)
+    @Query(value = "call mxh_bookface.mutual_friend (:id1,:id2)",nativeQuery = true)
     Iterable<User> getAllMutualFriends(@Param("id1") Long id1, @Param("id2") Long id2);
 
-    @Query(value = "select * from app_user where username like ?1 and enabled = true",nativeQuery = true)
+    @Query(value = "select * from mxh_bookface.app_user where username like ?1 and enabled = true",nativeQuery = true)
     Page<User> findUserByUsernameLike(String key, PageRequest pageRequest);
 }

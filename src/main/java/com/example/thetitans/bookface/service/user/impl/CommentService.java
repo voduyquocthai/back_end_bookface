@@ -1,13 +1,13 @@
 package com.example.thetitans.bookface.service.user.impl;
 
 import com.example.thetitans.bookface.dto.CommentDto;
-import com.example.thetitans.bookface.dto.PostResponse;
 import com.example.thetitans.bookface.exception.PostNotFoundException;
 import com.example.thetitans.bookface.mapper.CommentMapper;
 import com.example.thetitans.bookface.model.post.Comment;
 import com.example.thetitans.bookface.model.post.Post;
 import com.example.thetitans.bookface.model.user.User;
 import com.example.thetitans.bookface.repository.CommentRepo;
+import com.example.thetitans.bookface.repository.EmotionCommentRepo;
 import com.example.thetitans.bookface.repository.PostRepo;
 import com.example.thetitans.bookface.repository.UserRepo;
 import com.example.thetitans.bookface.service.security.AuthService;
@@ -32,6 +32,7 @@ public class CommentService implements ICommentService {
     private final AuthService authService;
     private final CommentMapper commentMapper;
     private final CommentRepo commentRepo;
+    private final EmotionCommentRepo emotionCommentRepo;
 
     public void save(CommentDto commentDto) {
         Post post = postRepo.findById(commentDto.getPostId()).
@@ -71,6 +72,7 @@ public class CommentService implements ICommentService {
     }
 
     public void delete(Long commentId) {
+        emotionCommentRepo.deleteEmotionCommentByCommentId(commentId);
         commentRepo.deleteById(commentId);
     }
 }

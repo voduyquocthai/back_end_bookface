@@ -38,6 +38,7 @@ public class UserController {
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user){
         Optional<User> userOptional = userService.findById(id);
         if (userOptional.isPresent()){
+            user.setRole(userOptional.get().getRole());
             if (user.getAvatar() == null){
                 user.setAvatar(userOptional.get().getAvatar());
             }
@@ -50,6 +51,7 @@ public class UserController {
     public ResponseEntity<Iterable<User>> friend(@PathVariable Long id){
         return new ResponseEntity<>(userService.findFriend(id),HttpStatus.OK);
     }
+
 
     @GetMapping("/mutual-friends/{userId1}/{userId2}")
     public ResponseEntity<Iterable<User>> getAllMutualFriends(@PathVariable("userId1") Long id1, @PathVariable("userId2") Long id2){

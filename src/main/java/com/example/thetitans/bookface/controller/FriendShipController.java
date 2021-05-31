@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/friend")
 @AllArgsConstructor
@@ -44,5 +46,11 @@ public class FriendShipController {
     public ResponseEntity<Friendship> searchFriend(@PathVariable Long senderUserId, @PathVariable Long receiverUserId) {
         Friendship friendship = friendshipService.searchIfExistFriends(senderUserId, receiverUserId);
         return new ResponseEntity<Friendship>(friendship, HttpStatus.OK);
+    }
+
+    @GetMapping("/listFriends/{receiverId}")
+    public ResponseEntity<List<Friendship>> findAllFriendsByReceiverUserId(@PathVariable Long receiverId) {
+        List<Friendship> friendships = friendshipService.findAllFriendsByReceiverUserId(receiverId);
+        return new ResponseEntity<> (friendships, HttpStatus.OK);
     }
 }

@@ -40,4 +40,9 @@ public class MessageService implements IMessageService {
     public void delete(Long id) {
         messageRepo.deleteById(id);
     }
+
+    @Override
+    public Iterable<Message> getAllHistoryBetweenTwoUser(Long userId1, Long userId2, Integer size) {
+        return messageRepo.getAllHistoryBetweenTwoUser(userId1, userId2, size);
+    }
 }

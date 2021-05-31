@@ -18,6 +18,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/auth")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
     private final RefreshTokenService refreshTokenService;
 
