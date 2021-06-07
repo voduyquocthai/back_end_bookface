@@ -35,6 +35,6 @@ public class BookFaceApplication {
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
 
-    //Test commit
+    //thai_deploy
     
 }
