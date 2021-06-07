@@ -57,7 +57,7 @@ public class AuthService {
         user.setFirstName(registerRequest.getFirstName());
         user.setLastName(registerRequest.getLastName());
         user.setCreated(Instant.now());
-        user.setEnabled(false);
+        user.setEnabled(true);
         Role appRole = new Role();
         appRole.setId(1L);
         user.setRole(appRole);
