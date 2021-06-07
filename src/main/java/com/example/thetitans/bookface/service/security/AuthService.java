@@ -69,7 +69,7 @@ public class AuthService {
                 user.getEmail(),
                 "Thank you for signing up to BookFace, " +
                         "please click to the below url to activate your account: " +
-                        "http://localhost:8080/auth/accountVerification/" + token));
+                        "https://book-face-back-end.herokuapp.com/auth/accountVerification/" + token));
     }
 
 
